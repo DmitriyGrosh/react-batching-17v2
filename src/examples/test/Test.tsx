@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState, useRef, useEffect } from "react";
 import { getCountries, getFields, setRegister } from "../../sources";
 
 interface IValues {
@@ -25,6 +25,7 @@ const Test = () => {
 	const [submitLoading, setSubmitLoading] = useState<boolean>(false);
 	const [currentFocus, setCurrentFocus] = useState<string>('email');
 	const [isDirty, setIsDirty] = useState<boolean>(false);
+	const ref = useRef<HTMLInputElement>(null);
 
 	const selectInitCountries = async () => {
 		if (!countries.length) {
@@ -121,6 +122,11 @@ const Test = () => {
 	};
 
 	console.log('===> render');
+
+	useEffect(() => {
+		console.log('==========>ref', ref);
+		ref.current?.focus();
+	}, []);
 	return (
 		<form
 			style={{
@@ -142,10 +148,11 @@ const Test = () => {
 			<input
 				onFocus={() => onFocus('email')}
 				onChange={(event) => handleChangeInput(event, 'email')}
-				disabled={!fields.includes('email')}
+				// disabled={!fields.includes('email')}
 				name="email"
 				placeholder="email"
 				type="email"
+				ref={ref}
 				autoFocus={currentFocus === 'email'}
 			/>
 			{fieldsError.includes('email') && (<span>enter email</span>)}
