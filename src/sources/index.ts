@@ -1,11 +1,3 @@
-import {
-	IAddittionalSearch,
-	IComment,
-	IPhotos,
-	IUser,
-	TSearch,
-} from "../interfaces";
-
 export interface IField {
 	name: string;
 	defaultValue: string;
@@ -91,56 +83,6 @@ const values1 = [
 	}
 ];
 
-export const get5000Comments = (): Promise<IComment[]> => new Promise((resolve) => {
-	setTimeout(() => {
-		const requests = [];
-		const requet = fetch('https://jsonplaceholder.typicode.com/comments')
-			.then((res) => res.json());
-
-		let i = 0;
-		while (i < 10) {
-			requests.push(requet);
-			i++;
-		}
-
-		const result = Promise.all(requests).then((res) => {
-			const result: IComment[] = [];
-
-			res.forEach((el: IComment[]) => {
-				result.push(...el)
-			});
-
-			return result;
-		});
-
-		resolve(result);
-	}, 1000);
-});
-
-export const get5000Photos = (): Promise<IPhotos[]> => new Promise((resolve) => {
-	setTimeout(() => {
-		const requests = [];
-		const request = fetch('https://jsonplaceholder.typicode.com/photos')
-			.then((res) => res.json());
-		let i = 0;
-
-		while (i < 1) {
-			requests.push(request);
-			i++;
-		}
-
-		resolve(Promise.all(requests).then((res) => {
-			const result: IPhotos[] = [];
-
-			res.forEach((el: IPhotos[]) => {
-				result.push(...el)
-			});
-
-			return result;
-		}));
-	}, 1000);
-});
-
 export const getCountries = (): Promise<string[]> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
@@ -177,36 +119,6 @@ export const setFields = (data: IField[]): Promise<boolean> => {
 	});
 }
 
-export const getUsersData = (page: number, search: IAddittionalSearch): Promise<{lastPage: number, users: IUser[]}> => {
-	const searchKey = Object.keys(search)[0];
-	const searchValue: string = Object.values(search)[0];
-
-	return new Promise((resolve) => {
-		get5000Comments().then((res) => {
-			let users: IUser[] = res.map((comment) => ({
-				...comment,
-				verified: comment.id % 2 === 0 ? 'verified' : 'notVerified',
-				country: countries[comment.postId],
-			}));
-
-			if (searchValue) {
-				if (searchKey !== 'verified') {
-					users = users.filter((el) => el[searchKey as TSearch].includes(searchValue));
-				} else {
-					users = users.filter((el) => el[searchKey] === searchValue);
-				}
-			}
-
-			const response = {
-				lastPage: users.length / 100,
-				users: users.slice(page === 1 ? 0 : (page * 100) - 1, page === 1 ? 99 : ((page + 1) * 100) - 1),
-			};
-
-			resolve(response);
-		});
-	});
-};
-
 export const setRegister = <T extends {}>(data: T): Promise<boolean> => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -220,3 +132,16 @@ export const setRegister = <T extends {}>(data: T): Promise<boolean> => {
 		}, 1000);
 	});
 }
+
+export const createDeal = (data: any): Promise<number> => new Promise((resolve) => {
+	setTimeout(() => resolve(1000), 100);
+});
+
+export const sleep = (duration: number) => {
+	const start = new Date().getTime();
+	let end = start;
+	while (end < start + duration) {
+		end = new Date().getTime();
+	}
+};
+

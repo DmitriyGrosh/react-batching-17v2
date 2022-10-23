@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
-import comments from "./comments";
-import users from "./users";
+import form from './form';
 
 const store = configureStore({
 	reducer: {
-		comments,
-		users,
+		form,
 	},
 	devTools: true,
 });

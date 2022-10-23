@@ -1,16 +1,13 @@
 import React, { Profiler, useState } from "react";
 
-import HighWorkWithRedux from "./examples/high/HighWorkWithRedux";
-import HighWorkWithAsync from "./examples/high/HighWorkWithAsync";
-import MediumWorkWithRedux from "./examples/medium/MediumWorkWithRedux";
-import MediumWorkWithAsync from "./examples/medium/MediumWorkWithAsync";
-import Simple from "./examples/simple/Simple";
-import Test from "./examples/test/Test";
-import Test2 from "./examples/test/Test2";
-import TestWithFocus from "./examples/test/TestWithFocus";
 import { Button } from "@mui/material";
+import AsyncAwait from "./demos/AsyncAwait";
+import DynamicForm from "./demos/DynamicForm";
+import Focus17DynamicForm from "./demos/Focus17DynamicForm";
+import ReduxBatch from "./demos/ReduxBatch";
 
 import "./App.css";
+import Effects from "./demos/Effects";
 
 function App() {
   const [view, setView] = useState<number>(0)
@@ -34,8 +31,12 @@ function App() {
       <div className="App">
         <Button variant={view === 0 ? "contained" : 'outlined'} onClick={() => setView(0)}>Без фокуса</Button>
         <Button variant={view === 1 ? "contained" : 'outlined'} onClick={() => setView(1)}>С фокусом</Button>
-        {view === 0 && <Test2 />}
-        {view === 1 && <TestWithFocus />}
+        {/*<Button variant={view === 2 ? "contained" : 'outlined'} onClick={() => setView(2)}>Редакс</Button>*/}
+        {view === 0 && <DynamicForm />}
+        {view === 1 && <Focus17DynamicForm />}
+        {/*{view === 2 && <ReduxBatch />}*/}
+        {/*<AsyncAwait />*/}
+        {/*<Effects />*/}
       </div>
     </Profiler>
   );
