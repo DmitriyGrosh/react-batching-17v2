@@ -1,4 +1,9 @@
-import React, {SyntheticEvent, useCallback, useState} from 'react';
+import React, {
+	SyntheticEvent,
+	useCallback,
+	useState,
+	FC
+} from 'react';
 import {
 	Autocomplete, AutocompleteValue,
 	Box,
@@ -14,7 +19,7 @@ import {getReduxCountries, getReduxFields, updateCountries, updateCountryError} 
 type TField = 'email' | 'firstName' | 'lastName' | 'state' | 'city' | 'password' | 'confirm' | 'phone' | 'country';
 type TValue<T> = Partial<Record<TField, T>>;
 
-const ReduxBatch = () => {
+const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 	const dispatch = useAppDispatch();
 	const [refFields, setRefFields] = useState<TValue<HTMLInputElement>>({});
 
@@ -37,7 +42,10 @@ const ReduxBatch = () => {
 	} = useAppSelector((state) => state.form);
 
 	const handleSelectCountry = (_event: SyntheticEvent, value: AutocompleteValue<any, any, any, any>) => {
-		dispatch(getReduxFields(value));
+		dispatch(getReduxFields({
+			country: value,
+			isBatch
+		}));
 	};
 
 	const handleSearchCountries = () => {
@@ -84,7 +92,7 @@ const ReduxBatch = () => {
 				getOptionLabel={(option) => option}
 				onChange={handleSelectCountry}
 				renderInput={(params) => (
-					<TextField
+					<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 						{...params}
 						placeholder="Select country"
 						InputProps={{
@@ -102,7 +110,7 @@ const ReduxBatch = () => {
 				loading={countryLoading}
 			/>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					// inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('email') || disabledFields?.email}
@@ -123,7 +131,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('phone') || disabledFields?.phone}
@@ -145,7 +153,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('firstName') || disabledFields?.firstName}
@@ -166,7 +174,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('lastName') || disabledFields?.lastName}
@@ -187,7 +195,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('state') || disabledFields?.state}
@@ -208,7 +216,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('city') || disabledFields?.city}
@@ -229,7 +237,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('password') || disabledFields?.password}
@@ -251,7 +259,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('confirm') || disabledFields?.confirm}
@@ -273,7 +281,7 @@ const ReduxBatch = () => {
 				/>
 			</Box>
 			<Box width="60%">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					fullWidth
 					error={submitError}
 					disabled={!submitEnabled}

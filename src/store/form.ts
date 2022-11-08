@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCountries, getFields2 } from "../sources";
-import {batch} from "react-redux";
+import { batch } from "react-redux";
 
 type TField = 'email' | 'firstName' | 'lastName' | 'state' | 'city' | 'password' | 'confirm' | 'phone' | 'country';
 type TValue<T> = Partial<Record<TField, T>>;
@@ -100,7 +100,7 @@ export const getReduxCountries = createAsyncThunk('form/countries', async () => 
 	return getCountries();
 });
 
-export const getReduxFields = createAsyncThunk('form/fields', async (country: string, { dispatch}) => {
+export const getReduxFields = createAsyncThunk('form/fields', async ({ country, isBatch }: { country: string, isBatch: boolean }, { dispatch}) => {
 	const fields = await getFields2();
 
 	const dirties: TValue<boolean> = {};
@@ -129,19 +129,21 @@ export const getReduxFields = createAsyncThunk('form/fields', async (country: st
 		names.push(name);
 	});
 
-	batch(() => {
+	if (isBatch) {
+		batch(() => {
+			dispatch(setDirties(dirties));
+			dispatch(setValues(values));
+			dispatch(setErrors(errors));
+			dispatch(setTouches(touches));
+			dispatch(setDisables(disables));
+		});
+	} else {
 		dispatch(setDirties(dirties));
 		dispatch(setValues(values));
 		dispatch(setErrors(errors));
 		dispatch(setTouches(touches));
 		dispatch(setDisables(disables));
-	});
-
-	dispatch(setDirties(dirties));
-	dispatch(setValues(values));
-	dispatch(setErrors(errors));
-	dispatch(setTouches(touches));
-	dispatch(setDisables(disables));
+	}
 
 	return names;
 });

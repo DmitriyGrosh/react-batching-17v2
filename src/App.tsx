@@ -1,44 +1,59 @@
-import React, { Profiler, useState } from "react";
+import React from "react";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
 
-import { Button } from "@mui/material";
 import AsyncAwait from "./demos/AsyncAwait";
 import DynamicForm from "./demos/DynamicForm";
 import Focus17DynamicForm from "./demos/Focus17DynamicForm";
 import ReduxBatch from "./demos/ReduxBatch";
 
 import "./App.css";
-import Effects from "./demos/Effects";
+
+const Links = () => {
+  return (
+    <div className="links">
+      <div className="container">
+        <NavLink to="/async-await">
+          Пример с async await
+        </NavLink>
+      </div>
+      <div className="container">
+        <NavLink to="/form">
+          Пример с form
+        </NavLink>
+      </div>
+      <div className="container">
+        <NavLink to="/focus-form">
+          Пример с focus form
+        </NavLink>
+      </div>
+      <div className="container">
+        <NavLink to="/redux-form">
+          Пример с redux form
+        </NavLink>
+      </div>
+      <div className="container">
+        <NavLink to="/redux-form-batch">
+          Пример с redux form batch
+        </NavLink>
+      </div>
+    </div>
+  );
+}
 
 function App() {
-  const [view, setView] = useState<number>(0)
-  function onRenderCallback(
-    id: string, // the "id" prop of the Profiler tree that has just committed
-    phase: string, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
-    actualDuration: number, // time spent rendering the committed update
-    baseDuration: number, // estimated time to render the entire subtree without memoization
-    startTime: number, // when React began rendering this update
-    commitTime: number, // when React committed this update
-    interactions: any // the Set of interactions belonging to this update
-  ) {
-    // console.log('==========>phase', phase);
-    // console.log('==========>actualDuration', actualDuration);
-    // console.log('==========>baseDuration', baseDuration);
-    // console.log('==========>startTime', startTime);
-    // console.log('==========>commitTime', commitTime);
-  }
   return (
-    <Profiler id="app" onRender={onRenderCallback} >
+    <BrowserRouter>
       <div className="App">
-        <Button variant={view === 0 ? "contained" : 'outlined'} onClick={() => setView(0)}>Без фокуса</Button>
-        <Button variant={view === 1 ? "contained" : 'outlined'} onClick={() => setView(1)}>С фокусом</Button>
-        {/*<Button variant={view === 2 ? "contained" : 'outlined'} onClick={() => setView(2)}>Редакс</Button>*/}
-        {view === 0 && <DynamicForm />}
-        {view === 1 && <Focus17DynamicForm />}
-        {/*{view === 2 && <ReduxBatch />}*/}
-        {/*<AsyncAwait />*/}
-        {/*<Effects />*/}
+        <Routes>
+          <Route path="*" element={<Links />} />
+          <Route path="/async-await" element={<AsyncAwait />} />
+          <Route path="/form" element={<DynamicForm />} />
+          <Route path="/focus-form" element={<Focus17DynamicForm />} />
+          <Route path="/redux-form" element={<ReduxBatch isBatch={false} />} />
+          <Route path="/redux-form-batch" element={<ReduxBatch isBatch />} />
+        </Routes>
       </div>
-    </Profiler>
+    </BrowserRouter>
   );
 }
 

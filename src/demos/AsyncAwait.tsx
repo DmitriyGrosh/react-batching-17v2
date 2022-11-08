@@ -13,7 +13,6 @@ const AsyncAwait = () => {
 	const [deal, setDeal] = useState<number>(0);
 	const [submitButtonDisabled, setSubmitButtonDisabled] = useState<boolean>(false);
 
-
 	const onClick = async (formData: any) => {
 		sleep(3000);
 		setLoading(true);
@@ -46,20 +45,20 @@ const AsyncAwait = () => {
 			flexDirection="column"
 			gap="20px"
 		>
-			<Button onClick={onClick}>Click</Button>
-			{loading ? (<CircularProgress color="inherit" size={20} />) : (
-				<Box>
+			<button className="click-button" onClick={onClick}>Click</button>
+			{loading ? (<CircularProgress color="inherit" size={100} />) : (
+				<Box className="deal-text">
 					{deal}
 				</Box>
 			)}
-			{deal}
-			<TextField
+			<span className="deal-text">{deal}</span>
+			<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 				type="submit"
 				disabled={!submitButtonDisabled}
+				className="async-await-button"
 			>
 				Отправить
 			</TextField>
-			{/*<span key={counter}>{counter}</span>*/}
 			<RenderCounter name="async await" />
 		</Box>
 	);

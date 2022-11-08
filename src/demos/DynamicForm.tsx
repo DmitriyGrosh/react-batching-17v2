@@ -249,6 +249,8 @@ const DynamicForm = () => {
 
 	return (
 		<Box
+			width="100%"
+			height="100%"
 			display="flex"
 			flexDirection="column"
 			component="form"
@@ -267,7 +269,7 @@ const DynamicForm = () => {
 				getOptionLabel={(option) => option}
 				onChange={handleSelectCountry}
 				renderInput={(params) => (
-					<TextField
+					<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 						{...params}
 						placeholder="Select country"
 						InputProps={{
@@ -285,7 +287,7 @@ const DynamicForm = () => {
 				loading={countryLoading}
 			/>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('email') || disabledFields?.email}
@@ -306,7 +308,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('phone') || disabledFields?.phone}
@@ -328,7 +330,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('firstName') || disabledFields?.firstName}
@@ -349,7 +351,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('lastName') || disabledFields?.lastName}
@@ -370,7 +372,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('state') || disabledFields?.state}
@@ -391,7 +393,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('city') || disabledFields?.city}
@@ -412,7 +414,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('password') || disabledFields?.password}
@@ -434,7 +436,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('confirm') || disabledFields?.confirm}
@@ -456,7 +458,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="60%">
-				<TextField
+				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
 					fullWidth
 					error={submitError}
 					disabled={!submitEnabled}
