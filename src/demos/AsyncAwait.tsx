@@ -52,7 +52,7 @@ const AsyncAwait = () => {
 				</Box>
 			)}
 			<span className="deal-text">{deal}</span>
-			<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+			<TextField 
 				type="submit"
 				disabled={!submitButtonDisabled}
 				className="async-await-button"

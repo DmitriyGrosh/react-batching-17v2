@@ -92,7 +92,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				getOptionLabel={(option) => option}
 				onChange={handleSelectCountry}
 				renderInput={(params) => (
-					<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+					<TextField 
 						{...params}
 						placeholder="Select country"
 						InputProps={{
@@ -110,7 +110,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				loading={countryLoading}
 			/>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					// inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('email') || disabledFields?.email}
@@ -131,7 +131,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('phone') || disabledFields?.phone}
@@ -153,7 +153,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('firstName') || disabledFields?.firstName}
@@ -174,7 +174,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('lastName') || disabledFields?.lastName}
@@ -195,7 +195,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('state') || disabledFields?.state}
@@ -216,7 +216,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('city') || disabledFields?.city}
@@ -237,7 +237,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('password') || disabledFields?.password}
@@ -259,7 +259,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('confirm') || disabledFields?.confirm}
@@ -281,7 +281,7 @@ const ReduxBatch: FC<{isBatch: boolean}> = ({ isBatch}) => {
 				/>
 			</Box>
 			<Box width="60%">
-				<TextField style={{border: "2px solid black",borderRadius: '5px', }}
+				<TextField 
 					fullWidth
 					error={submitError}
 					disabled={!submitEnabled}
