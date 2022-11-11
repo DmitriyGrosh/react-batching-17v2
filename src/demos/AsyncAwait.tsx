@@ -45,20 +45,20 @@ const AsyncAwait = () => {
 			flexDirection="column"
 			gap="20px"
 		>
-			<button className="click-button" onClick={onClick}>Click</button>
+			<button className="click-button" onClick={onClick}>Load</button>
 			{loading ? (<CircularProgress color="inherit" size={100} />) : (
 				<Box className="deal-text">
-					{deal}
+					Deals: {deal}
 				</Box>
 			)}
-			<span className="deal-text">{deal}</span>
-			<TextField 
-				type="submit"
-				disabled={!submitButtonDisabled}
-				className="async-await-button"
-			>
-				Отправить
-			</TextField>
+			{/*<span className="deal-text">{deal}</span>*/}
+			{/*<TextField */}
+			{/*	type="submit"*/}
+			{/*	disabled={!submitButtonDisabled}*/}
+			{/*	className="async-await-button"*/}
+			{/*>*/}
+			{/*	Отправить*/}
+			{/*</TextField>*/}
 			<RenderCounter name="async await" />
 		</Box>
 	);
