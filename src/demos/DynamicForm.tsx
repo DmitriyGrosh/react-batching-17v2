@@ -10,8 +10,10 @@ import {
 	Autocomplete,
 	AutocompleteValue,
 	Box,
-	CircularProgress, InputAdornment,
+	CircularProgress,
+	InputAdornment,
 	TextField,
+	Typography,
 } from "@mui/material";
 import {
 	getCountries,
@@ -259,35 +261,39 @@ const DynamicForm = () => {
 			gap="20px"
 			onSubmit={handleSubmit}
 		>
-			<Autocomplete
-				fullWidth
-				onOpen={handleSearchCountries}
-				onClose={() => {
-					setCountries([]);
-					setCountryError(false);
-				}}
-				getOptionLabel={(option) => option}
-				onChange={handleSelectCountry}
-				renderInput={(params) => (
-					<TextField 
-						{...params}
-						placeholder="Select country"
-						InputProps={{
-							...params.InputProps,
-							endAdornment: (
-								<>
-									{countryLoading ? <CircularProgress color="inherit" size={20} /> : countryError ? 'error' : null}
-									{params.InputProps.endAdornment}
-								</>
-							),
-						}}
-					/>
-				)}
-				options={countries}
-				loading={countryLoading}
-			/>
+			<Typography component="h2" variant="h2">Sign up</Typography>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<Autocomplete
+					fullWidth
+					onOpen={handleSearchCountries}
+					onClose={() => {
+						setCountries([]);
+						setCountryError(false);
+					}}
+					getOptionLabel={(option) => option}
+					onChange={handleSelectCountry}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							placeholder="Select country"
+							InputProps={{
+								...params.InputProps,
+								endAdornment: (
+									<>
+										{countryLoading ? <CircularProgress color="inherit" size={20} /> : countryError ? 'error' : null}
+										{params.InputProps.endAdornment}
+									</>
+								),
+							}}
+						/>
+					)}
+					options={countries}
+					loading={countryLoading}
+				/>
+			</Box>
+
+			<Box width="80%" display="flex" alignItems="center" gap="20px">
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('email') || disabledFields?.email}
@@ -308,7 +314,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('phone') || disabledFields?.phone}
@@ -330,7 +336,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('firstName') || disabledFields?.firstName}
@@ -351,7 +357,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('lastName') || disabledFields?.lastName}
@@ -372,7 +378,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('state') || disabledFields?.state}
@@ -393,7 +399,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('city') || disabledFields?.city}
@@ -414,7 +420,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('password') || disabledFields?.password}
@@ -436,7 +442,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('confirm') || disabledFields?.confirm}
@@ -458,7 +464,7 @@ const DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="60%">
-				<TextField 
+				<TextField
 					fullWidth
 					error={submitError}
 					disabled={!submitEnabled}

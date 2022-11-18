@@ -11,7 +11,7 @@ import {
 	AutocompleteValue,
 	Box,
 	CircularProgress, InputAdornment,
-	TextField,
+	TextField, Typography,
 } from "@mui/material";
 import {
 	getCountries,
@@ -263,35 +263,38 @@ const Focus17DynamicForm = () => {
 			gap="20px"
 			onSubmit={handleSubmit}
 		>
-			<Autocomplete
-				fullWidth
-				onOpen={handleSearchCountries}
-				onClose={() => {
-					setCountries([]);
-					setCountryError(false);
-				}}
-				getOptionLabel={(option) => option}
-				onChange={handleSelectCountry}
-				renderInput={(params) => (
-					<TextField 
-						{...params}
-						placeholder="Select country"
-						InputProps={{
-							...params.InputProps,
-							endAdornment: (
-								<>
-									{countryLoading ? <CircularProgress color="inherit" size={20} /> : countryError ? 'error' : null}
-									{params.InputProps.endAdornment}
-								</>
-							),
-						}}
-					/>
-				)}
-				options={countries}
-				loading={countryLoading}
-			/>
+			<Typography component="h2" variant="h2">Sign up</Typography>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<Autocomplete
+					fullWidth
+					onOpen={handleSearchCountries}
+					onClose={() => {
+						setCountries([]);
+						setCountryError(false);
+					}}
+					getOptionLabel={(option) => option}
+					onChange={handleSelectCountry}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							placeholder="Select country"
+							InputProps={{
+								...params.InputProps,
+								endAdornment: (
+									<>
+										{countryLoading ? <CircularProgress color="inherit" size={20} /> : countryError ? 'error' : null}
+										{params.InputProps.endAdornment}
+									</>
+								),
+							}}
+						/>
+					)}
+					options={countries}
+					loading={countryLoading}
+				/>
+			</Box>
+			<Box width="80%" display="flex" alignItems="center" gap="20px">
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('email') || disabledFields?.email}
@@ -312,7 +315,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('phone') || disabledFields?.phone}
@@ -334,7 +337,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('firstName') || disabledFields?.firstName}
@@ -355,7 +358,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('lastName') || disabledFields?.lastName}
@@ -376,7 +379,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('state') || disabledFields?.state}
@@ -397,7 +400,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('city') || disabledFields?.city}
@@ -418,7 +421,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('password') || disabledFields?.password}
@@ -440,7 +443,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
-				<TextField 
+				<TextField
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('confirm') || disabledFields?.confirm}
@@ -462,7 +465,7 @@ const Focus17DynamicForm = () => {
 				/>
 			</Box>
 			<Box width="60%">
-				<TextField 
+				<TextField
 					fullWidth
 					error={submitError}
 					disabled={!submitEnabled}
