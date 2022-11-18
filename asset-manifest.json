@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-batching-17v2/static/css/main.ed1078c1.css",
-    "main.js": "/react-batching-17v2/static/js/main.a7e721e4.js",
+    "main.js": "/react-batching-17v2/static/js/main.584b49b2.js",
     "static/js/787.f1672cd9.chunk.js": "/react-batching-17v2/static/js/787.f1672cd9.chunk.js",
     "index.html": "/react-batching-17v2/index.html",
     "main.ed1078c1.css.map": "/react-batching-17v2/static/css/main.ed1078c1.css.map",
-    "main.a7e721e4.js.map": "/react-batching-17v2/static/js/main.a7e721e4.js.map",
+    "main.584b49b2.js.map": "/react-batching-17v2/static/js/main.584b49b2.js.map",
     "787.f1672cd9.chunk.js.map": "/react-batching-17v2/static/js/787.f1672cd9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ed1078c1.css",
-    "static/js/main.a7e721e4.js"
+    "static/js/main.584b49b2.js"
   ]
 }
